@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Resource Health Report</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #0078d4; 
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .high { 
+            color: #d13438;
+            font-weight: bold;
+        }
+        .medium { 
+            color: #ff8c00;
+            font-weight: bold;
+        }
+        .low { 
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .status-available {
+            color: #107c10;
+            font-weight: bold;
+        }
+        .status-unavailable {
+            color: #d13438;
+            font-weight: bold;
+        }
+        .status-degraded {
+            color: #ff8c00;
+            font-weight: bold;
+        }
+        h1, h2, h3 {
+            color: #0078d4;
+        }
+        .summary-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f0f8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Azure Resource Health Report</h1>
+        <h2>Generated: October 26, 2025 14:30:45</h2>
+        
+        <div class="summary-box">
+            <h3>Executive Summary</h3>
+            <p>Analysis Period: Last 7 days</p>
+            <p>Resources Analyzed: 15</p>
+            <p>Critical Issues Found: 2</p>
+            <p>Warning Issues Found: 3</p>
+            <p>Subscription: Production Environment (sub-id-12345)</p>
+        </div>
+
+        <h3>Resource Health Status</h3>
+        <table>
+            <tr>
+                <th>Resource Name</th>
+                <th>Resource Type</th>
+                <th>Health Status</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>prod-webapp-01</td>
+                <td>Microsoft.Web/sites</td>
+                <td class="status-available">Available</td>
+                <td>East US</td>
+            </tr>
+            <tr>
+                <td>prod-sql-server</td>
+                <td>Microsoft.Sql/servers</td>
+                <td class="status-degraded">Degraded</td>
+                <td>East US</td>
+            </tr>
+            <tr>
+                <td>prod-vm-001</td>
+                <td>Microsoft.Compute/virtualMachines</td>
+                <td class="status-available">Available</td>
+                <td>East US</td>
+            </tr>
+            <tr>
+                <td>prod-storage-account</td>
+                <td>Microsoft.Storage/storageAccounts</td>
+                <td class="status-unavailable">Unavailable</td>
+                <td>East US</td>
+            </tr>
+            <tr>
+                <td>prod-keyvault</td>
+                <td>Microsoft.KeyVault/vaults</td>
+                <td class="status-available">Available</td>
+                <td>East US</td>
+            </tr>
+        </table>
+        
+        <h3>Identified Issues</h3>
+        <table>
+            <tr>
+                <th>Resource Name</th>
+                <th>Issue Type</th>
+                <th>Severity</th>
+                <th>Description</th>
+                <th>Recommended Action</th>
+            </tr>
+            <tr>
+                <td>prod-storage-account</td>
+                <td>Health</td>
+                <td class="high">High</td>
+                <td>Resource is in Unavailable state</td>
+                <td>
+                    1. Check storage account network configuration<br>
+                    2. Verify access policies<br>
+                    3. Review recent configuration changes
+                </td>
+            </tr>
+            <tr>
+                <td>prod-sql-server</td>
+                <td>Performance</td>
+                <td class="medium">Medium</td>
+                <td>High CPU utilization detected (85% average)</td>
+                <td>
+                    1. Review current workload patterns<br>
+                    2. Consider scaling up the database tier<br>
+                    3. Optimize frequent queries
+                </td>
+            </tr>
+            <tr>
+                <td>prod-webapp-01</td>
+                <td>Error</td>
+                <td class="medium">Medium</td>
+                <td>Multiple 500 errors detected in application logs</td>
+                <td>
+                    1. Review application logs for error details<br>
+                    2. Check application insights for exception tracking<br>
+                    3. Verify recent deployment changes
+                </td>
+            </tr>
+            <tr>
+                <td>prod-vm-001</td>
+                <td>Performance</td>
+                <td class="low">Low</td>
+                <td>Memory usage spike detected during peak hours</td>
+                <td>
+                    1. Monitor memory usage patterns<br>
+                    2. Review running services and applications<br>
+                    3. Consider memory optimization
+                </td>
+            </tr>
+        </table>
+
+        <h3>Metric Analysis</h3>
+        <table>
+            <tr>
+                <th>Resource Name</th>
+                <th>Metric</th>
+                <th>Average</th>
+                <th>Maximum</th>
+                <th>Threshold</th>
+            </tr>
+            <tr>
+                <td>prod-webapp-01</td>
+                <td>Response Time</td>
+                <td>235ms</td>
+                <td>890ms</td>
+                <td>1000ms</td>
+            </tr>
+            <tr>
+                <td>prod-sql-server</td>
+                <td>CPU Percentage</td>
+                <td>85%</td>
+                <td>95%</td>
+                <td>90%</td>
+            </tr>
+            <tr>
+                <td>prod-vm-001</td>
+                <td>Memory Usage</td>
+                <td>75%</td>
+                <td>88%</td>
+                <td>90%</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
